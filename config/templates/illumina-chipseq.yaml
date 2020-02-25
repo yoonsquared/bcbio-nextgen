@@ -7,10 +7,11 @@ details:
   # field stating either "input" or chip". For each batch there
   # should be a sample with "chip" phenotype and a sample with "input"
   # phenotype (no more than two samples per batch)
+  # macs2 narrow is default
   metadata:
      batch: your-batch-name
      phenotype: chip # or input
-  genome_build: mm10
+  genome_build: [mm10, GRCh37]
   algorithm:
     aligner: bowtie2
     adapters: [truseq]
@@ -18,5 +19,6 @@ details:
     peakcaller: [macs2]
   resources:
     macs2:
+      options: ["-g mm"] or ["-g hs"](default)
       options: ["--broad", "-q 0.05"]
 
